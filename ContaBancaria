@@ -1,0 +1,62 @@
+package pacote1;
+
+public class ContaBancaria {
+
+	private double saldo;
+	private double limite;
+	
+	
+	
+	public ContaBancaria (double saldo, double limite) {
+		this.saldo = saldo;
+		this.limite = limite;
+		
+	}
+	
+	
+	
+	
+	public double getsaldo() {
+		return saldo;
+	}
+	public void setsaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	public double getlimite() {
+		return limite;
+	}
+	public void setlimite(double limite) {
+		this.limite = limite;
+	}
+	
+	public double getSaldocomLimite() {
+		return saldo + limite;
+		
+	}
+	
+	
+
+	
+	public boolean sacar (double valor) throws ContaException {
+		
+		if (valor < 500.00) {
+			throw new ContaException("valores maiores que 500 não são permitidos ");
+		
+		}
+		if ((saldo - valor) + limite < 0) {
+            throw new ContaException("Erro: Saldo insuficiente considerando o limite da conta.");
+        }
+		
+		saldo = saldo - valor;
+		 return true;
+	}
+	public void depositar(double valor) throws ContaException {
+        if (valor > 1000.00) {
+            throw new ContaException("Erro: Depósitos não podem exceder R$1.000,00.");
+        }
+
+        saldo += valor;
+	
+	
+}
+	}
