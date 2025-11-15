@@ -1,0 +1,35 @@
+package pacote1;
+
+public class TesteContabancaria {
+	public static void main(String[] args) {
+		
+		ContaBancaria conta = new ContaBancaria(300.00, 200.00);
+
+        try {
+            System.out.println("Saldo inicial: R$" + conta.getsaldo());
+            System.out.println("Saldo com limite: R$" + conta.getSaldocomLimite());
+           
+
+            conta.depositar(500.00);
+            System.out.println("Após depósito: R$" + conta.getsaldo());
+
+            conta.sacar(450.00);
+            System.out.println("Após saque: R$" + conta.getsaldo());
+
+            
+            conta.sacar(600.00);
+        } catch (ContaException e) {
+            System.out.println("Exceção capturada: " + e.getMessage());
+        }
+
+        try {
+            
+            conta.depositar(1500.00);
+        } catch (ContaException e) {
+            System.out.println("Exceção capturada: " + e.getMessage());
+        }
+    }
+		
+		
+		
+}
